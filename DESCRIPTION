@@ -1,0 +1,23 @@
+Package: shinyDataFilter
+Type: Package
+Version: 0.0.1
+Title: agnostic, idiomatic data filter module for shiny
+Description: a small data filter module for shiny.
+Authors@R: c(
+    person(
+        given = "Doug", family = "Kelkhoff", 
+        email = "kelkhoff.douglas@gene.com", role = c("aut", "cre")))
+Maintainer: Doug Kelkhoff <kelkhoff.douglas@gene.com>
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports:
+    shiny,
+    ggplot2,
+    pillar,
+    crayon,
+    RColorBrewer
+Suggests:
+    shinytest,
+    testthat
