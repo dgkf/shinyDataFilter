@@ -20,5 +20,7 @@ Then, run this sample app to build filters with `shinyDataFilter`:
 
 ``` r
 library(shiny)
+library(dplyr)
+
 shinyAppFile(system.file("examples", "basic_app", "app.R", package = "shinyDataFilter"))
 ```
