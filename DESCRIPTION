@@ -6,8 +6,10 @@ Description: a small data filter module for shiny.
 Authors@R: c(
     person(
         given = "Doug", family = "Kelkhoff", 
-        email = "kelkhoff.douglas@gene.com", role = c("aut", "cre")))
-Maintainer: Doug Kelkhoff <kelkhoff.douglas@gene.com>
+        email = "doug.kelkhoff@gmail.com", role = c("aut", "cre")),
+    person(
+        given = "Matthew", family = "B"))
+Maintainer: Doug Kelkhoff <doug.kelkhoff@gmail.com>
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
