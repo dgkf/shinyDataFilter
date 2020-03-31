@@ -25,7 +25,7 @@ srv <- function(input, output, session) {
   
   filter_srv <- eventReactive(data(), {
     message(isolate(data()))
-    shinyDataFilter::shiny_vector_filter(isolate(data()), "test_in")
+    shinyDataFilter_Maya::shiny_vector_filter(isolate(data()), "test_in")
   })
   
   filter <- reactive(callModule(
@@ -37,7 +37,7 @@ srv <- function(input, output, session) {
   
   output$data_display <- renderUI({
     data()
-    shinyDataFilter::shiny_vector_filter_ui(isolate(data()), "test_in")
+    shinyDataFilter_Maya::shiny_vector_filter_ui(isolate(data()), "test_in")
   })
   
   output$orig_data <- shiny::renderPrint(data())

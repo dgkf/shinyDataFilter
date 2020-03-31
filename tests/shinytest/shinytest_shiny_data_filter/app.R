@@ -4,11 +4,11 @@ ui <- fluidPage(
     column(8,
       verbatimTextOutput("data_summary"),
       verbatimTextOutput("data_filter_code")),
-    column(4, shinyDataFilter::shiny_data_filter_ui("data_filter"))))
+    column(4, shinyDataFilter_Maya::shiny_data_filter_ui("data_filter"))))
 
 srv <- function(input, output, session) {
   filtered_data <- callModule(
-    shinyDataFilter::shiny_data_filter,
+    shinyDataFilter_Maya::shiny_data_filter,
     "data_filter",
     data = airquality,
     verbose = FALSE)

@@ -10,8 +10,8 @@ shiny_vector_filter_ui.logical <- function(data, inputId) {
 #' @export
 shiny_vector_filter.logical <- function(data, inputId, ...) {
   function(input, output, session, 
-    x = shiny::reactive(logical()), filter_na = shiny::reactive(TRUE), 
-    verbose = FALSE) {
+           x = shiny::reactive(logical()), filter_na = shiny::reactive(TRUE), 
+           verbose = FALSE) {
     
     ns <- session$ns
     
@@ -24,52 +24,18 @@ shiny_vector_filter.logical <- function(data, inputId, ...) {
     output$ui <- shiny::renderUI({
       filter_log("updating ui", verbose = verbose)
       shiny::div(style = "position: relative;",
-        shiny::div(style = "
+                 shiny::div(style = "
           position: absolute; 
           top: -2px; right: 16px; bottom: -2px; left: 16px;
           animation: 
             0.75s ease-out 0s 1 shinyDataFilterEnlargeX, 
             0.5s ease-in  0s 1 shinyDataFilterFadeIn; 
           transform-origin: left;",
-          shiny::plotOutput(ns("plot"), height = "100%")),
-        shiny::checkboxGroupInput(ns("param"), NULL,
-          choices = choices(),
-          selected = shiny::isolate(input$param) %||% c(),
-          width = "100%"))
-    })
-  
-    output$plot <- shiny::renderPlot(bg = 'transparent', {
-      # Proportional
-      ggplot2::ggplot() +
-        # sort factor so that it reflects checkbox order
-        ggplot2::aes(x = factor(
-          as.character(x_wo_NA()),
-          levels = rev(choices()))) +
-        ggplot2::geom_bar(ggplot2::aes_(y = ~..count.. / sum(..count..)),
-          width = 0.95,
-          fill = grDevices::rgb(66/255, 139/255, 202/255),
-          color = NA,
-          alpha = 0.2) +
-        ggplot2::coord_flip() +
-        ggplot2::theme_void() +
-        ggplot2::scale_x_discrete(expand = c(0, 0)) +
-        ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, 1))
-      
-      # Normalized
-      # ggplot2::ggplot() + 
-      #   # sort factor so that it reflects checkbox order
-      #   ggplot2::aes(x = factor(
-      #     as.character(x_wo_NA()), 
-      #     levels = rev(choices()))) + 
-      #   ggplot2::geom_bar(
-      #     width = 0.95,
-      #     fill = grDevices::rgb(66/255, 139/255, 202/255), 
-      #     color = NA, 
-      #     alpha = 0.2) +
-      #   ggplot2::coord_flip() +
-      #   ggplot2::theme_void() + 
-      #   ggplot2::scale_x_discrete(expand = c(0, 0)) +
-      #   ggplot2::scale_y_continuous(expand = c(0, 0))
+                            shiny::plotOutput(ns("plot"), height = "100%")),
+                 shiny::checkboxGroupInput(ns("param"), NULL,
+                                           choices = choices(),
+                                           selected = shiny::isolate(input$param) %||% c(),
+                                           width = "100%"))
     })
     
     module_return$code <- shiny::reactive({

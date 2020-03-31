@@ -30,8 +30,7 @@ shiny_vector_filter.numeric <- function(data, inputId, ...) {
           animation: 
             0.75s ease-out 0s 1 shinyDataFilterEnlargeY, 
             0.5s ease-in  0s 1 shinyDataFilterFadeIn; 
-          transform-origin: bottom;",
-          shiny::plotOutput(ns("plot"), height = "100%")),
+          transform-origin: bottom;"),
         if (any(!is.na(x()))) {
           shiny::sliderInput(ns("param"), NULL,
             value = shiny::isolate(input$param) %||% range(x(), na.rm = TRUE), 
@@ -48,21 +47,6 @@ shiny_vector_filter.numeric <- function(data, inputId, ...) {
       shiny::validate(shiny::need(sum(!is.na(x())) > 1, ""))
       d <- stats::density(x(), na.rm = TRUE)
       data.frame(x = d$x, y = d$y)
-    })
-    
-    output$plot <- shiny::renderPlot(
-      bg = 'transparent', 
-      height = 25, {
-      shiny::validate(shiny::need("data.frame" %in% class(x_density_df()), ""))
-      ggplot2::ggplot(x_density_df()) + 
-        ggplot2::aes_(x = ~x, y = ~y) + 
-        ggplot2::geom_area(
-          fill = grDevices::rgb(66/255, 139/255, 202/255), 
-          color = NA, 
-          alpha = 0.2) + 
-        ggplot2::theme_void() + 
-        ggplot2::scale_y_continuous(expand = c(0,0)) + 
-        ggplot2::scale_x_continuous(expand = c(0,0))
     })
     
     module_return$code <- shiny::reactive({

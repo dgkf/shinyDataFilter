@@ -52,7 +52,7 @@ filter_log <- function(..., ns, verbose = TRUE) isolate({
     else i
   }, list(...))
   
-  do.call("message", as.list(c(
+ do.call("message", as.list(c(
     filter_log_style("[filters] "), 
     filter_log_ns_style(ns(NULL)), 
     do.call(crayon::black, c(dots, sep = "")))))
