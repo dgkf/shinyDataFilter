@@ -1,5 +1,5 @@
 library(shiny)
-library(shinyDataFilter)
+library(IDEAFilter)
 
 library(dplyr)  # for data preprocessing and example data
 

@@ -1,4 +1,4 @@
-Package: shinyDataFilter
+Package: IDEAFilter
 Type: Package
 Version: 0.0.1
 Title: agnostic, idiomatic data filter module for shiny
