@@ -5,11 +5,11 @@ Title: agnostic, idiomatic data filter module for shiny
 Description: a small data filter module for shiny.
 Authors@R: c(
     person(
-        given = "Doug", family = "Kelkhoff", 
-        email = "doug.kelkhoff@gmail.com", role = c("aut", "cre")),
+        given = "Maya", family = "Gans", 
+        email = "maya.gans@biogen.com", role = c("aut", "cre")),
     person(
         given = "Matthew", family = "B"))
-Maintainer: Doug Kelkhoff <doug.kelkhoff@gmail.com>
+Maintainer: Maya Gans <maya.gans@biogen.com>
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
