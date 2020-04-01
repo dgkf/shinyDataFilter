@@ -8,7 +8,7 @@ Authors@R: c(
         given = "Maya", family = "Gans", 
         email = "maya.gans@biogen.com", role = c("aut", "cre")),
     person(
-        given = "Matthew", family = "B"))
+        given = "Maya", family = "G"))
 Maintainer: Maya Gans <maya.gans@biogen.com>
 License: MIT + file LICENSE
 Encoding: UTF-8

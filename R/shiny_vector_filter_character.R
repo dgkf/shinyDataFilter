@@ -5,7 +5,6 @@ shiny_vector_filter_ui.character <- function(data, inputId) {
   shiny::uiOutput(ns("ui"))
 }
 
-
 #' @importFrom shiny reactive reactiveValues renderUI textInput isolate
 #' @export
 shiny_vector_filter.character <- function(data, inputId, ...) {
