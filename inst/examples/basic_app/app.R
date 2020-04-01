@@ -1,7 +1,9 @@
 library(shiny)
 library(IDEAFilter)
-
 library(dplyr)  # for data preprocessing and example data
+
+# install.packages("devtools")
+# devtools::install_github("MayaGans/IDEAFilter")
 
 # prep a new data.frame with more diverse data types
 starwars2 <- starwars %>%
