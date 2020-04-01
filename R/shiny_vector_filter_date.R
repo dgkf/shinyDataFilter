@@ -8,7 +8,7 @@ shiny_vector_filter_ui.Date <- function(data, inputId) {
 
 
 #' @export
-shiny_vector_filter.Date <- function(input, output, session, x = shiny::reactive(lubridate::Date()), 
+shiny_vector_filter.Date <- function(input, output, session, x = shiny::reactive(Date()), 
                                      filter_na = shiny::reactive(FALSE), verbose = FALSE) {
   
   ns <- session$ns
@@ -29,9 +29,9 @@ shiny_vector_filter.Date <- function(input, output, session, x = shiny::reactive
                            start = min(x(), na.rm = TRUE), 
                            end = max(x(), na.rm = TRUE))
       } else {
-        shiny::div(
-          style = "padding-top: 10px; opacity: 0.3; text-align: center;",
-          shiny::tags$h5(shiny::tags$i("no Date values")))
+        shiny::dateRangeInput(ns("param"), NULL,
+                              start = min(x(), na.rm = TRUE), 
+                              end = max(x(), na.rm = TRUE))
       })
   })
   
@@ -40,9 +40,9 @@ shiny_vector_filter.Date <- function(input, output, session, x = shiny::reactive
     
     if (!is.null(input$param)) {
       if (input$param[[1]] > min(x(), na.rm = TRUE))
-        exprs <- append(exprs, bquote(.x >= .(as.numeric(input$param[[1]]))))
+        exprs <- append(exprs, bquote(.x >= .(as.Date(input$param[[1]]))))
       if (input$param[[2]] < max(x(), na.rm = TRUE))
-        exprs <- append(exprs, bquote(.x <= .(as.numeric(input$param[[2]]))))
+        exprs <- append(exprs, bquote(.x <= .(as.Date(input$param[[2]]))))
     }
     
     if (length(exprs) > 1) {
