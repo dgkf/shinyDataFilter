@@ -10,13 +10,6 @@ starwars2 <- starwars %>%
   mutate(is_droid = species == "Droid") %>%
   select(name, gender, height, mass, hair_color, eye_color, vehicles, is_droid)
 
-# create some labels to showcase column select input
-attr(starwars2$name, "label")     <- "name of character"
-attr(starwars2$gender, "label")   <- "gender of character"
-attr(starwars2$height, "label")   <- "height of character in centimeters"
-attr(starwars2$mass, "label")     <- "mass of character in kilograms"
-attr(starwars2$is_droid, "label") <- "whether character is a droid"
-
 ui <- fluidPage(
   titlePanel("Filter Data Example"),
   fluidRow(
