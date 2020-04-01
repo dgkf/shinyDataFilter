@@ -9,7 +9,7 @@
 #' @importFrom stats density
 #' @export
 shiny_vector_filter_numeric_few <- function(input, output, session,
-            x = shiny::reactive(factor()),  #important: changed x to factor here
+            x = shiny::reactive(factor(sort())),  #important: changed x to factor here
            filter_na = shiny::reactive(FALSE), verbose = FALSE) {
     
   ns <- session$ns
@@ -17,7 +17,7 @@ shiny_vector_filter_numeric_few <- function(input, output, session,
   x_wo_NA <- shiny::reactive(Filter(Negate(is.na), x()))
   module_return <- shiny::reactiveValues(code = TRUE, mask = TRUE)
   
-  choices <- shiny::reactive(unique(as.character(x_wo_NA())))
+  choices <- shiny::reactive(unique(as.character(sort(x_wo_NA()))))
   
   output$ui <- shiny::renderUI({
     filter_log("updating ui", verbose = verbose)

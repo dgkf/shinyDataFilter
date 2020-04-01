@@ -15,8 +15,12 @@ ui <- fluidPage(
   fluidRow(
     column(8,
       dataTableOutput("data_summary"),
-      verbatimTextOutput("data_filter_code")),
-    column(4, shiny_data_filter_ui("data_filter"))))
+      verbatimTextOutput("data_filter_code")
+      # ,verbatimTextOutput("data_filter_str")
+      ),
+    column(4, shiny_data_filter_ui("data_filter")))
+  
+  )
 
 server <- function(input, output, session) {
   filtered_data <- callModule(
@@ -33,6 +37,9 @@ server <- function(input, output, session) {
           collapse = " "))
     ))
   })
+  # output$data_filter_str <- renderPrint({
+  #   cat(paste(str(filtered_data())))
+  # })
 
   output$data_summary <- renderDataTable({
     filtered_data() 
