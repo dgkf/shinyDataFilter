@@ -20,26 +20,24 @@ proportionSelectInput <- function(inputId, label, vec, selected = "", ...,
   
   vecr <- if (is.reactive(vec)) vec else reactive(vec)
   
-  vecr_counts <- sort(table(vecr()), decreasing = TRUE)
-  vecr_counts <- setNames(as.numeric(vecr_counts), names(vecr_counts))
-  vecr_props  <- vecr_counts / sum(vecr_counts)
+  vecr_counts <- table(vecr())
+  # vecr_counts <- setNames(as.numeric(vecr_counts), names(vecr_counts))
+  # vecr_props  <- vecr_counts / sum(vecr_counts)
   
-  if (sort == "count") {
+  # if (sort == "count") {
     vecr_unique <- names(vecr_counts)
-  } else if (sort == "alpha") {
-    vecr_unique <- as.character(sort(unique(Filter(Negate(is.na), vecr()))))
-  } else {
-    vecr_unique <- unique(Filter(Negate(is.na), vecr()))
-  }
+  # } else if (sort == "alpha") {
+  #   vecr_unique <- as.character(sort(unique(Filter(Negate(is.na), vecr()))))
+  # } else {
+  #   vecr_unique <- unique(Filter(Negate(is.na), vecr()))
+  # }
   
   labels <- Map(function(v) {
     json <- sprintf(strip_leading_ws('
     {
-      "name": "%s",
-      "prop": %f,
-      "count": %d
+      "name": "%s"
     }'), 
-    v, vecr_props[[v]], vecr_counts[[v]])
+    v)
   }, vecr_unique)
   choices <- setNames(as.list(vecr_unique), labels)
   
@@ -58,7 +56,6 @@ proportionSelectInput <- function(inputId, label, vec, selected = "", ...,
                     '<div style=\"position: absolute; top: 5%; bottom: 5%; left: 0%; width: ' + item.data.prop * 100 + '%; background-color: #428BCA; opacity: 0.2;\"></div>' + 
                     '<div style=\"z-index: 1;\">' + 
                       escape(item.data.name) + ' ' + 
-                      '<strong style=\"opacity: 0.3;\">' + escape(item.data.count) + '</strong>' + 
                     '</div>' + 
                  '</div>';
         },
@@ -68,9 +65,6 @@ proportionSelectInput <- function(inputId, label, vec, selected = "", ...,
           item.data = JSON.parse(item.label);
           return '<div style=\"padding-left: 0.5em; padding-right: 0.5em;\">' + 
                    escape(item.value) + ' ' + 
-                   '<strong style=\"opacity: 0.3;\">' + 
-                     '(' + escape(item.data.count) + ')' + 
-                   '</strong>' + 
                  '</div>';   
         }
       }")),
