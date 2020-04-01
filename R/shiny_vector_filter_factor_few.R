@@ -41,7 +41,7 @@ shiny_vector_filter_factor_few <- function(input, output, session,
         animation: 
           0.75s ease-out 0s 1 shinyDataFilterEnlargeX, 
           0.5s ease-in  0s 1 shinyDataFilterFadeIn; 
-        transform-origin: left;",
+        transform-origin: left;" #, # why is this comma not an error?
       ),
       shiny::checkboxGroupInput(ns("param"), NULL,
         choices = choices(),
