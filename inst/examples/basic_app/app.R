@@ -2,7 +2,6 @@ library(shiny)
 library(IDEAFilter)
 library(dplyr)
 library(haven)
-library(here)
 
 starwars2 <- read_xpt("adsl.xpt")
 
