@@ -1,4 +1,3 @@
-
 #' A vector filter for numeric variables with only many choices
 #'
 #' @importFrom shiny reactive reactiveValues renderUI div plotOutput sliderInput
@@ -36,14 +35,6 @@ shiny_vector_filter_numeric_many <- function(input, output, session, x = shiny::
         })
     })
     
-    # No longer need since mgans deleted plot that used this
-    # in commit 87d99ecf4fb74ea2011d51941deefa5682d78c27
-    # x_density_df <- shiny::reactive({
-    #   shiny::validate(shiny::need(sum(!is.na(x())) > 1, ""))
-    #   d <- stats::density(x(), na.rm = TRUE)
-    #   data.frame(x = d$x, y = d$y)
-    # })
-    
     module_return$code <- shiny::reactive({
       exprs <- list()
       
@@ -75,4 +66,3 @@ shiny_vector_filter_numeric_many <- function(input, output, session, x = shiny::
     
     module_return
 }
-
