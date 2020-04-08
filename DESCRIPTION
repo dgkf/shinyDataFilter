@@ -17,7 +17,8 @@ Imports:
     ggplot2,
     pillar,
     crayon,
-    RColorBrewer
+    RColorBrewer,
+    waiter
 Suggests:
     shinytest,
     testthat
