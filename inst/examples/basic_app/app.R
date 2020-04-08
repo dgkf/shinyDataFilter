@@ -3,6 +3,7 @@ library(IDEAFilter)
 library(dplyr)
 library(haven)
 
+# starwars2 <- read_sas("/Users/mayagans/Desktop/adae.sas7bdat")
 starwars2 <- read_xpt("adsl.xpt")
 
 ui <- fluidPage(
