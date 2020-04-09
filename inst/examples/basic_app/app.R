@@ -3,15 +3,16 @@ library(IDEAFilter)
 library(dplyr)
 library(haven)
 
-# starwars2 <- read_sas("/Users/mayagans/Desktop/adae.sas7bdat")
-starwars2 <- read_xpt("adsl.xpt")
+starwars2 <- read_xpt("adsl.xpt")%>% mutate(a_datetime = as.POSIXct(paste(RFSTDTC, "00:00:00")))%>%
+  select(a_datetime,everything())
 
 ui <- fluidPage(
   titlePanel("Filter Data Example"),
   fluidRow(
     column(8,
-           tableOutput("data_summary"),
-           verbatimTextOutput("data_filter_code")),
+           verbatimTextOutput("data_filter_code"),
+           tableOutput("data_summary")
+    ),
     column(4, shiny_data_filter_ui("data_filter"))))
 
 server <- function(input, output, session) {
