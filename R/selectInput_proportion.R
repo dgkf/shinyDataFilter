@@ -14,7 +14,7 @@
 #' @importFrom shiny selectizeInput
 #' 
 proportionSelectInput <- function(inputId, label, vec, selected = "", ..., 
-    placeholder = "", onInitialize, sort = c("count", "alpha", "order")) {
+  placeholder = " ", onInitialize, sort = c("count", "alpha", "order")) {
   
   sort <- match.arg(sort, c("count", "alpha", "order"), several.ok = FALSE)
   
@@ -85,8 +85,8 @@ proportionSelectInput <- function(inputId, label, vec, selected = "", ...,
       }")),
       
       # placeholder
-      if (missing(placeholder)) list() 
-      else list(placeholder = placeholder),
+      # if (missing(placeholder)) list() 
+      list(placeholder = placeholder),
       
       # onInitialize
       if (missing(onInitialize) && !missing(placeholder))

@@ -3,12 +3,10 @@ Type: Package
 Version: 0.0.1
 Title: agnostic, idiomatic data filter module for shiny
 Description: a small data filter module for shiny.
-Authors@R: c(
-    person(
-        given = "Maya", family = "Gans", 
-        email = "maya.gans@biogen.com", role = c("aut", "cre")),
-    person(
-        given = "Maya", family = "G"))
+Authors@R: as.person(c(
+    "Maya Gans <maya.gans@biogen.com> [aut, cre]", 
+    "Aaron Clark <aaron.clark@biogen.com> [aut]"
+  ))
 Maintainer: Maya Gans <maya.gans@biogen.com>
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -19,7 +17,8 @@ Imports:
     ggplot2,
     pillar,
     crayon,
-    RColorBrewer
+    RColorBrewer,
+    waiter
 Suggests:
     shinytest,
     testthat
