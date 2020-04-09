@@ -19,12 +19,22 @@ shiny_vector_filter.character <- function(data, inputId, ...) {
   module_return <- shiny::reactiveValues(code = TRUE, mask = TRUE)
   
   output$ui <- shiny::renderUI({
+    
     filter_log("updating ui", verbose = verbose)
-    proportionSelectInput(ns("param"), NULL,
-                          vec = x,
-                          selected = shiny::isolate(input$param) %||% c(),
-                          multiple = TRUE,
-                          width = "100%")
+    
+    if (map(x(), is.empty) %>% reduce(`&`)) {
+      shiny::div(style = "opacity: 0.5;",
+                 p(width = "100%", 
+                   align = "center", 
+                   "Variable only contains blank values"))
+    } else {
+      proportionSelectInput(ns("param"), NULL,
+                            vec = x,
+                            selected = shiny::isolate(input$param) %||% c(),
+                            multiple = TRUE,
+                            width = "100%")
+    }
+
   })
   
   module_return$code <- shiny::reactive({
