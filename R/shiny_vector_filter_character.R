@@ -26,7 +26,7 @@ shiny_vector_filter.character <- function(data, inputId, ...) {
       shiny::div(style = "opacity: 0.5;",
                  p(width = "100%", 
                    align = "center", 
-                   "Input is blank"))
+                   "Variable only contains blank values"))
     } else {
       proportionSelectInput(ns("param"), NULL,
                             vec = x,
