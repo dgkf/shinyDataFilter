@@ -16,7 +16,7 @@ shiny_vector_filter.POSIXct <- function(data, inputId, ...) {
     module_return <- shiny::reactiveValues(code = TRUE, mask = TRUE)
     
     p <- reactive({
-      as.POSIXct(x(), origin = "1970-01-01 00:00:00")
+      as.POSIXct(x(), origin = "1970-01-01 00:00:00", tz = "GMT")
     })
     
     output$ui <- shiny::renderUI({
@@ -52,12 +52,12 @@ shiny_vector_filter.POSIXct <- function(data, inputId, ...) {
     })
     
     st_dt <- reactive({
-      st <- substr(strftime(input$st_time, "%Y-%m-%d %H:%M:%S"),12,20)
-      return(as.POSIXct(paste(input$st_date, st)))
+      st <- substr(strftime(input$st_time, "%Y-%m-%d %H:%M:%S", tz = "GMT"),12,20)
+      as.POSIXct(paste(input$st_date, st), tz = "GMT")
     })
     end_dt <- reactive({
-      end <- substr(strftime(input$end_time, "%Y-%m-%d %H:%M:%S"),12,20)
-      as.POSIXct(paste(input$end_date, end))
+      end <- substr(strftime(input$end_time, "%Y-%m-%d %H:%M:%S", tz = "GMT"),12,20)
+      as.POSIXct(paste(input$end_date, end), tz = "GMT")
     })
     
     module_return$code <- shiny::reactive({
