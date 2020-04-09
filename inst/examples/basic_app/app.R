@@ -3,8 +3,10 @@ library(IDEAFilter)
 library(dplyr)
 library(haven)
 
-starwars2 <- read_xpt("adsl.xpt")%>% mutate(a_datetime = as.POSIXct(paste(RFSTDTC, "00:00:00")))%>%
-  select(a_datetime,everything())
+starwars2 <- read_xpt("adsl.xpt") %>% 
+  mutate(a_datetime = as.POSIXct(paste(RFSTDTC, "00:00:00"))) %>%
+  select(a_datetime,everything()) %>%
+  mutate(blank = "")
 
 ui <- fluidPage(
   titlePanel("Filter Data Example"),

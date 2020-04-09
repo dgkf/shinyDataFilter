@@ -141,3 +141,13 @@ strip_leading_ws <- function(txt, simplify = TRUE) {
     txt
   }
 }
+
+#' Check if string is blank ""
+#'
+#' @param x text to check if equal to ""
+#'
+#' @return logical of blank or not
+#' 
+is.empty <- function(x) {
+  identical("", x)
+}
