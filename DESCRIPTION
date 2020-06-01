@@ -18,7 +18,8 @@ Imports:
     pillar,
     crayon,
     RColorBrewer,
-    waiter
+    waiter,
+    shinyTime
 Suggests:
     shinytest,
     testthat
