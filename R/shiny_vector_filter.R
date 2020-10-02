@@ -87,7 +87,7 @@ shiny_vector_filter_ui.default <- function(data, inputId) {
 #' @export
 #' 
 shiny_vector_filter <- function(data, inputId, global = FALSE) {
-  if (!global) {
+  if (!global && exists("shiny_vector_filter", envir = .GlobalEnv)) {
     args = list(data = data, inputId = inputId, global = TRUE)
     do.call("shiny_vector_filter", args, envir = .GlobalEnv)
   } else {
