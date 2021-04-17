@@ -133,5 +133,5 @@ get_dataFilter_class <- function(obj) {
   
   if (!length(vf_class)) return("unk")
   class(obj) <- vf_class
-  pillar::new_pillar_type(obj)$type
+  pillar::new_pillar_type(obj)[[1]][1]
 }
