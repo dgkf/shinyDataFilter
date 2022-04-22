@@ -4,7 +4,14 @@
 \alias{shiny_data_filter}
 \title{Shiny data filter module server function}
 \usage{
-shiny_data_filter(input, output, session, data, verbose = FALSE)
+shiny_data_filter(
+  input,
+  output,
+  session,
+  data,
+  choices = names,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{input}{requisite shiny module field specifying incoming ui input
@@ -18,6 +25,11 @@ session}
 
 \item{data}{a \code{data.frame} or \code{reactive expression} returning a
 \code{data.frame} to use as the input to the filter module}
+
+\item{choices}{a \code{list} of values to select from, passed to
+\code{\link[shiny]{selectizeInput}}. Alternatively, \code{choices} may also
+be a function used to extract choices from a (possibly filtered)
+\code{data}. Defaults to the names of \code{data}.}
 
 \item{verbose}{a \code{logical} value indicating whether or not to print log
 statements out to the console}
@@ -55,27 +67,36 @@ attr(starwars2$is_droid, "label") <- "whether character is a droid"
 ui <- fluidPage(
   titlePanel("Filter Data Example"),
   fluidRow(
-    column(8, 
+    column(8,
       verbatimTextOutput("data_summary"),
-      verbatimTextOutput("data_filter_code")),
-    column(4, shiny_data_filter_ui("data_filter"))))
+      verbatimTextOutput("data_filter_code")
+    ),
+    column(4,
+      shiny_data_filter_ui("data_filter")
+    )
+  )
+)
 
 server <- function(input, output, session) {
   filtered_data <- callModule(
-    shiny_data_filter, 
-    "data_filter", 
+    shiny_data_filter,
+    "data_filter",
     data = starwars2,
-    verbose = FALSE)
-  
+    choices = c("gender", "height")
+    verbose = FALSE
+  )
+
   output$data_filter_code <- renderPrint({
-    cat(gsub("\%>\%", "\%>\% \\n ", 
-      gsub("\\\\s{2,}", " ", 
+    cat(gsub("\%>\%", "\%>\% \n ",
+      gsub("\\\\s{2,}", " ",
         paste0(
-          capture.output(attr(filtered_data(), "code")), 
-          collapse = " "))
+          capture.output(attr(filtered_data(), "code")),
+          collapse = " "
+        )
+      )
     ))
   })
-  
+
   output$data_summary <- renderPrint({
     if (nrow(filtered_data())) show(filtered_data())
     else "No data available"

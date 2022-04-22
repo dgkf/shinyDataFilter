@@ -4,8 +4,14 @@
 \alias{shiny_data_filter_item}
 \title{The server function for the filter item module of a data filter module panel}
 \usage{
-shiny_data_filter_item(input, output, session, data, column_name = NULL,
-  verbose = FALSE)
+shiny_data_filter_item(
+  input,
+  output,
+  session,
+  data,
+  column_name = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{input}{requisite shiny module field specifying incoming ui input

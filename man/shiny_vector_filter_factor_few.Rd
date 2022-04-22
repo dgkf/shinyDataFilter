@@ -4,9 +4,14 @@
 \alias{shiny_vector_filter_factor_few}
 \title{A vector filter for factors with only a few choices}
 \usage{
-shiny_vector_filter_factor_few(input, output, session,
-  x = shiny::reactive(factor()), filter_na = shiny::reactive(TRUE),
-  verbose = FALSE)
+shiny_vector_filter_factor_few(
+  input,
+  output,
+  session,
+  x = shiny::reactive(factor()),
+  filter_na = shiny::reactive(TRUE),
+  verbose = FALSE
+)
 }
 \arguments{
 \item{input}{requisite shiny module field specifying incoming ui input

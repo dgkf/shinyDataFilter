@@ -4,7 +4,7 @@
 \alias{shiny_vector_filter}
 \title{Vector-specific filter module server function}
 \usage{
-shiny_vector_filter(data, inputId)
+shiny_vector_filter(data, inputId, global = FALSE)
 }
 \arguments{
 \item{data}{the data object to be filtered}
