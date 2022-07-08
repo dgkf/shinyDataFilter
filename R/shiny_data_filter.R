@@ -101,7 +101,7 @@ shiny_data_filter_ui <- function(inputId) {
 #'     shiny_data_filter,
 #'     "data_filter",
 #'     data = starwars2,
-#'     verbose = FALSE
+#'     verbose = TRUE
 #'   )
 #'
 #'   output$data_filter_code <- renderPrint({
@@ -144,7 +144,8 @@ shiny_data_filter <- function(input, output, session, data,
   filter_returns <- list(filter_0 = reactiveValues(
     data = datar,
     code = reactive(TRUE),
-    remove = NULL))
+    remove = NULL
+  ))
 
   update_filter <- function(fid, in_fid, column_name = NULL) {
     fs <- isolate(filters())
@@ -165,8 +166,10 @@ shiny_data_filter <- function(input, output, session, data,
       shiny_data_filter_item,
       fid,
       data = filter_returns[[in_fid]]$data,
+      choices = choices,
       column_name = column_name,
-      verbose = verbose)
+      verbose = verbose
+    )
   }
 
   output$add_filter_select_ui <- renderUI({
@@ -185,11 +188,12 @@ shiny_data_filter <- function(input, output, session, data,
       if (isTRUE(filter_returns[[fid]]$remove)) {
         idx <- utils::head(which(filters() == fid), 1)
         filter_returns[[fid]]$destroy
-
         filters(setdiff(filters(), fid))
 
         # overwrite existing module call with one taking new input data
-        if (!idx > length(filters())) update_filter(filters()[[idx]])
+        if (idx <= length(filters())) {
+          update_filter(filters()[[idx]])
+        }
 
         removeUI(selector = sprintf("#%s-ui", ns(fid)))
         break
@@ -204,7 +208,8 @@ shiny_data_filter <- function(input, output, session, data,
     insertUI(
       selector = sprintf("#%s", ns("sortableList")),
       where = "beforeEnd",
-      ui = shiny_data_filter_item_ui(ns(fid), verbose = verbose))
+      ui = shiny_data_filter_item_ui(ns(fid), verbose = verbose)
+    )
   })
 
   observeEvent(input$add_filter_select, {

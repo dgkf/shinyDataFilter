@@ -82,8 +82,7 @@ server <- function(input, output, session) {
     shiny_data_filter,
     "data_filter",
     data = starwars2,
-    choices = c("gender", "height")
-    verbose = FALSE
+    verbose = TRUE
   )
 
   output$data_filter_code <- renderPrint({

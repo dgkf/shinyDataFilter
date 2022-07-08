@@ -39,7 +39,7 @@ This function will conform to the following specification
   requisite shiny module field specifying incoming ui input reactiveValues
 }
 \item{\code{output}}{
-  requisite shiny module field capturing output for the shiny data filter 
+  requisite shiny module field capturing output for the shiny data filter
   ui
 }
 \item{\code{session}}{
