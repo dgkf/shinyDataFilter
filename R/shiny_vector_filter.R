@@ -120,7 +120,7 @@ shiny_vector_filter.default <- function(data, inputId, ...) {
 #'
 #' @return a pillar formatted class name
 #'
-#' @importFrom pillar new_pillar_type
+#' @importFrom pillar type_sum
 #'
 get_dataFilter_class <- function(obj) {
   vf_methods <- gsub(".*\\.", "", as.character(methods(shiny_vector_filter)))
@@ -133,5 +133,7 @@ get_dataFilter_class <- function(obj) {
 
   if (!length(vf_class)) return("unk")
   class(obj) <- vf_class
-  pillar::new_pillar_type(obj)[[1]][1]
+
+  type <- pillar::type_sum(obj)
+  if (length(type) == 0L) "" else type
 }
