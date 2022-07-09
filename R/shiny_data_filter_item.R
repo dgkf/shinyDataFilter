@@ -111,7 +111,8 @@ shiny_data_filter_item <- function(input, output, session, data,
         style = 'float: right;',
         shiny::icon("times-circle"))
     ),
-    shiny::uiOutput(ns("vector_filter_ui")))
+    shiny::uiOutput(ns("vector_filter_ui"))
+  )
 
   ui <- shiny::eventReactive(module_return$column_name, ignoreNULL = FALSE, {
     if (is.null(module_return$column_name)) column_select_ui
@@ -180,8 +181,6 @@ shiny_data_filter_item <- function(input, output, session, data,
     # before removing, reset param values
     session$sendInputMessage(ns("vector_filter-param"), list(value = 'null'))
     module_return$column_name <- NULL
-
-    stopApp(session)
   })
 
   shiny::observeEvent(input$remove_filter_btn, {
@@ -215,8 +214,6 @@ shiny_data_filter_item <- function(input, output, session, data,
   module_return$data <- shiny::reactive({
     filter_log("providing data filtered by '",
       module_return$column_name, "'", verbose = verbose)
-
-    print(col)
 
     out_data <- if (!nrow(data())) data()
     else {

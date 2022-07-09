@@ -30,7 +30,9 @@ server <- function(input, output, session) {
     shiny_data_filter,
     "data_filter",
     data = starwars2,
-    verbose = FALSE)
+    choices = c("height", "mass", "is_droid"),
+    verbose = FALSE
+  )
 
   output$data_filter_code <- renderPrint({
     cat(gsub("%>%", "%>% \n ",
@@ -42,8 +44,8 @@ server <- function(input, output, session) {
   })
 
   output$data_summary <- renderDataTable({
-    filtered_data() 
-  }, 
+    filtered_data()
+  },
   options = list(
     scrollX = TRUE,
     pageLength = 5
