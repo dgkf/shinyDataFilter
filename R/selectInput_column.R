@@ -3,33 +3,41 @@
 #' @param inputId passed to \code{\link[shiny]{selectizeInput}}
 #' @param label passed to \code{\link[shiny]{selectizeInput}}
 #' @param data \code{data.frame} object from which fields should be populated
+#' @param choices a \code{list} of values to select from, passed to
+#'   \code{\link[shiny]{selectizeInput}}. Alternatively, \code{choices} may also
+#'   be a function used to extract choices from a (possibly filtered)
+#'   \code{data}. Defaults to the names of \code{data}.
 #' @param selected default selection
 #' @param ... passed to \code{\link[shiny]{selectizeInput}}
 #' @param placeholder passed to \code{\link[shiny]{selectizeInput}} options
-#' @param onInitialize passed to \code{\link[shiny]{selectizeInput}} options 
+#' @param onInitialize passed to \code{\link[shiny]{selectizeInput}} options
 #'
 #' @return a \code{\link[shiny]{selectizeInput}} dropdown element
-#' 
+#'
 #' @importFrom shiny selectizeInput
-#' 
-columnSelectInput <- function(inputId, label, data, selected = "", ..., 
-    placeholder = "", onInitialize) {
-  
+#'
+columnSelectInput <- function(inputId, label, data, choices = names(data),
+    selected = "", ..., placeholder = "", onInitialize) {
+
   datar <- if (is.reactive(data)) data else reactive(data)
-  
+
+  if (is.function(choices)) choices <- choices(datar())
+  choices <- intersect(choices, names(datar()))
+
   labels <- Map(function(col) {
     json <- sprintf(strip_leading_ws('
     {
       "name": "%s",
       "label": "%s",
       "datatype": "%s"
-    }'), 
-    col, 
-    attr(datar()[[col]], "label") %||% "", 
+    }'),
+    col,
+    attr(datar()[[col]], "label") %||% "",
     get_dataFilter_class(datar()[[col]]))
-  }, col = names(datar()))
-  choices <- setNames(names(datar()), labels)
-  
+  }, col = choices)
+
+  names(choices) <- labels
+
   shiny::selectizeInput(
     inputId = inputId,
     label = label,
@@ -44,44 +52,44 @@ columnSelectInput <- function(inputId, label, data, selected = "", ...,
           return '<div>' +
                    '<div><strong>' +
                       escape(item.data.name) + ' ' +
-                      '<span style=\"opacity: 0.3;\"><code style=\"color: black;\"> ' + 
-                        item.data.datatype + 
-                      '</code></span>' + 
+                      '<span style=\"opacity: 0.3;\"><code style=\"color: black;\"> ' +
+                        item.data.datatype +
+                      '</code></span>' +
                    '</strong></div>' +
-                   (item.data.label != '' ? '<div style=\"line-height: 1em;\"><small>' + escape(item.data.label) + '</small></div>' : '') + 
+                   (item.data.label != '' ? '<div style=\"line-height: 1em;\"><small>' + escape(item.data.label) + '</small></div>' : '') +
                  '</div>';
         },
 
         // avoid data vomit splashing on screen when an option is selected
         item: function(item, escape) { return ''; }
       }")),
-      
+
       # fix for highlight persisting
       # https://github.com/selectize/selectize.js/issues/1141
-      list(onType = I("function(str) { 
+      list(onType = I("function(str) {
         str || this.$dropdown_content.removeHighlight();
       }")),
-      
-      list(onChange = I("function() { 
+
+      list(onChange = I("function() {
         this.$dropdown_content.removeHighlight();
       }")),
-      
+
       # remove highlighting when losing focus
       list(onDropdownOpen = I("function(dropdown) {
         dropdown.removeHighlight();
       }")),
-      
+
       # sort entries
       list(sortField = I("'value'")),
-      
+
       # placeholder
-      if (missing(placeholder)) list() 
+      if (missing(placeholder)) list()
       else list(placeholder = placeholder),
-      
+
       # onInitialize
       if (missing(onInitialize) && !missing(placeholder))
         list(onInitialize = I('function() { this.setValue(""); }'))
-      else if (!missing(onInitialize)) 
+      else if (!missing(onInitialize))
         list(onInitialize = onInitialize)
       else
         list()

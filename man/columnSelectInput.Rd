@@ -4,8 +4,16 @@
 \alias{columnSelectInput}
 \title{A selectizeInput customized for data frames with column labels}
 \usage{
-columnSelectInput(inputId, label, data, selected = "", ...,
-  placeholder = "", onInitialize)
+columnSelectInput(
+  inputId,
+  label,
+  data,
+  choices = names(data),
+  selected = "",
+  ...,
+  placeholder = "",
+  onInitialize
+)
 }
 \arguments{
 \item{inputId}{passed to \code{\link[shiny]{selectizeInput}}}
@@ -13,6 +21,11 @@ columnSelectInput(inputId, label, data, selected = "", ...,
 \item{label}{passed to \code{\link[shiny]{selectizeInput}}}
 
 \item{data}{\code{data.frame} object from which fields should be populated}
+
+\item{choices}{a \code{list} of values to select from, passed to
+\code{\link[shiny]{selectizeInput}}. Alternatively, \code{choices} may also
+be a function used to extract choices from a (possibly filtered)
+\code{data}. Defaults to the names of \code{data}.}
 
 \item{selected}{default selection}
 

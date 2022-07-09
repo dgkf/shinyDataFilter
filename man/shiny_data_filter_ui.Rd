@@ -39,27 +39,35 @@ attr(starwars2$is_droid, "label") <- "whether character is a droid"
 ui <- fluidPage(
   titlePanel("Filter Data Example"),
   fluidRow(
-    column(8, 
+    column(8,
       verbatimTextOutput("data_summary"),
-      verbatimTextOutput("data_filter_code")),
-    column(4, shiny_data_filter_ui("data_filter"))))
+      verbatimTextOutput("data_filter_code")
+    ),
+    column(4,
+      shiny_data_filter_ui("data_filter")
+    )
+  )
+)
 
 server <- function(input, output, session) {
   filtered_data <- callModule(
-    shiny_data_filter, 
-    "data_filter", 
+    shiny_data_filter,
+    "data_filter",
     data = starwars2,
-    verbose = FALSE)
-  
+    verbose = TRUE
+  )
+
   output$data_filter_code <- renderPrint({
-    cat(gsub("\%>\%", "\%>\% \\n ", 
-      gsub("\\\\s{2,}", " ", 
+    cat(gsub("\%>\%", "\%>\% \n ",
+      gsub("\\\\s{2,}", " ",
         paste0(
-          capture.output(attr(filtered_data(), "code")), 
-          collapse = " "))
+          capture.output(attr(filtered_data(), "code")),
+          collapse = " "
+        )
+      )
     ))
   })
-  
+
   output$data_summary <- renderPrint({
     if (nrow(filtered_data())) show(filtered_data())
     else "No data available"

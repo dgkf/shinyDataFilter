@@ -4,8 +4,16 @@
 \alias{proportionSelectInput}
 \title{A selectizeInput customized for unique element select from vector}
 \usage{
-proportionSelectInput(inputId, label, vec, selected = "", ...,
-  placeholder = "", onInitialize, sort = c("count", "alpha", "order"))
+proportionSelectInput(
+  inputId,
+  label,
+  vec,
+  selected = "",
+  ...,
+  placeholder = "",
+  onInitialize,
+  sort = c("count", "alpha", "order")
+)
 }
 \arguments{
 \item{inputId}{passed to \code{\link[shiny]{selectizeInput}}}
