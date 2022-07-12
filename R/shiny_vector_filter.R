@@ -81,6 +81,9 @@ shiny_vector_filter_ui.default <- function(data, inputId) {
 #'
 #' @param data the data object to be filtered
 #' @param inputId The \code{input} slot that will be used to access the value.
+#' @param global A \code{logical} value indicating whether the call is issued
+#'   through global methods search. Typically does not need to be specified
+#'   unless explicitly trying to avoid a global search for methods.
 #'
 #' @return a shiny server function as described in the details
 #'
@@ -121,9 +124,10 @@ shiny_vector_filter.default <- function(data, inputId, ...) {
 #' @return a pillar formatted class name
 #'
 #' @importFrom pillar type_sum
+#' @importFrom utils methods
 #'
 get_dataFilter_class <- function(obj) {
-  vf_methods <- gsub(".*\\.", "", as.character(methods(shiny_vector_filter)))
+  vf_methods <- gsub(".*\\.", "", as.character(utils::methods(shiny_vector_filter)))
 
   if ("numeric" %in% vf_methods)
     vf_methods <- c(vf_methods, "real", "double", "integer")
