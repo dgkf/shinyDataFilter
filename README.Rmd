@@ -7,7 +7,9 @@ output: "github_document"
 data-agnostic, shiny-idiomatic filter module
 
 <!-- badges: start -->
+[![CRAN](https://img.shields.io/cran/v/shinyDataFilter.svg)](https://cran.r-project.org/package=shinyDataFilter)
 [![R-CMD-check](https://github.com/dgkf/shinyDataFilter/workflows/R-CMD-check/badge.svg)](https://github.com/dgkf/shinyDataFilter/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/dgkf/shinyDataFilter/master.svg)](https://app.codecov.io/gh/dgkf/shinyDataFilter)
 <!-- badges: end -->
 
 ![shinyDataFilter](https://user-images.githubusercontent.com/18220321/77127982-b6a9fe80-6a0b-11ea-8233-e77e0f362d70.gif)
