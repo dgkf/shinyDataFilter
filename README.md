@@ -1,12 +1,12 @@
 
 # shinyDataFilter <a href='https://github.com/dgkf/shinyDataFilter'><img src='assets/hex-shinyDataFilter.png' align="right" height="139" /></a>
 
+data-agnostic, shiny-idiomatic filter module
+
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/dgkf/shinyDataFilter/workflows/check-full/badge.svg)](https://github.com/dgkf/shinyDataFilter/actions)
+[![R-CMD-check](https://github.com/dgkf/shinyDataFilter/workflows/R-CMD-check/badge.svg)](https://github.com/dgkf/shinyDataFilter/actions)
 <!-- badges: end -->
-
-data-agnostic, shiny-idiomatic filter module
 
 ![shinyDataFilter](https://user-images.githubusercontent.com/18220321/77127982-b6a9fe80-6a0b-11ea-8233-e77e0f362d70.gif)
 
@@ -32,5 +32,13 @@ Then, run this sample app to build filters with `shinyDataFilter`:
 
 ``` r
 library(shiny)
-shinyAppFile(system.file("examples", "basic_app", "app.R", package = "shinyDataFilter"))
+app <- system.file("examples", "basic_app", "app.R", package = "shinyDataFilter")
+shinyAppFile(app)
+```
+
+If you’d like to inspect the code for the app
+
+``` r
+file.edit(app)  # or
+file.show(app)
 ```
