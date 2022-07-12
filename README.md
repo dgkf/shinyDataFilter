@@ -1,5 +1,5 @@
 
-# shinyDataFilter <a href='https://github.com/dgkf/shinyDataFilter'><img src='man/figures/hex-shinyDataFilter.png' align="right" height="139" /></a>
+# shinyDataFilter <a href='https://github.com/dgkf/shinyDataFilter'><img src='man/figures/hex-shinyDataFilter.png' align="right" width="120" /></a>
 
 <!-- badges: start -->
 

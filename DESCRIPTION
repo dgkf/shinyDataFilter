@@ -1,6 +1,6 @@
 Package: shinyDataFilter
 Type: Package
-Version: 0.0.1
+Version: 0.0.1.9000
 Title: agnostic, idiomatic data filter module for shiny
 Description: a small data filter module for shiny.
 Authors@R: c(
