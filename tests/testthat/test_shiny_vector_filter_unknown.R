@@ -8,11 +8,9 @@ app$setInputs(`data_dput` = paste(capture.output(dput(data)), paste = "\n"))
 app$waitFor("data_display")
 
 
-
 test_that("testing that unknown datatypes show error message", {
   expect_true(grepl("don't know how to ", app$getValue("data_display")))
 })
 
 
-
-app$stop()
+app$finalize()

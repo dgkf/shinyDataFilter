@@ -4,6 +4,11 @@ output: "github_document"
 
 # shinyDataFilter <a href='https://github.com/dgkf/shinyDataFilter'><img src='assets/hex-shinyDataFilter.png' align="right" height="139" /></a>
 
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/dgkf/shinyDataFilter/workflows/check-full/badge.svg)](https://github.com/dgkf/shinyDataFilter/actions)
+<!-- badges: end -->
+
 data-agnostic, shiny-idiomatic filter module
 
 ![shinyDataFilter](https://user-images.githubusercontent.com/18220321/77127982-b6a9fe80-6a0b-11ea-8233-e77e0f362d70.gif)

@@ -7,8 +7,6 @@ data[which((data * 0.987) %% 0.2 < 0.01, arr.ind = TRUE)] <- NA
 app_path <- shinyDataFilter:::shinytest_path("shinytest_shiny_data_filter_item")
 app <- shinytest::ShinyDriver$new(app_path)
 
-
-
 test_that("test that filter item initializes with column select", {
   expect_true(!"filter-vector_filter-param" %in% app$listWidgets())
 })
@@ -44,4 +42,4 @@ test_that("test editing column removes vector filter", {
 })
 
 
-app$stop()
+app$finalize()

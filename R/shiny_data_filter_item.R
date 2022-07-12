@@ -38,6 +38,9 @@ shiny_data_filter_item_ui <- function(inputId, verbose = FALSE) {
 #'   session
 #' @param data a \code{reactive expression} returning a \code{data.frame} to use
 #'   as the input to the filter item module
+#' @param column_name A column name to initialize the filter item with. If
+#'   unspecified or \code{NULL}, the filter item is initialized in its column
+#'   selection state.
 #' @inheritParams columnSelectInput
 #' @param verbose a \code{logical} value indicating whether or not to print log
 #'   statements out to the console
@@ -53,7 +56,7 @@ shiny_data_filter_item_ui <- function(inputId, verbose = FALSE) {
 #' @export
 #'
 shiny_data_filter_item <- function(input, output, session, data,
-    column_name = NULL, choices = names(data),
+    column_name = NULL, choices = names,
     verbose = FALSE) {
 
   ns <- session$ns
