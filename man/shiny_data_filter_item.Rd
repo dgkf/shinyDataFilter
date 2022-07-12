@@ -10,7 +10,7 @@ shiny_data_filter_item(
   session,
   data,
   column_name = NULL,
-  choices = names(data),
+  choices = names,
   verbose = FALSE
 )
 }

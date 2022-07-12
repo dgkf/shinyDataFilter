@@ -8,7 +8,7 @@ columnSelectInput(
   inputId,
   label,
   data,
-  choices = names(data),
+  choices = names,
   selected = "",
   ...,
   placeholder = "",

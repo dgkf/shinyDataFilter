@@ -53,7 +53,7 @@ shiny_data_filter_item_ui <- function(inputId, verbose = FALSE) {
 #' @export
 #'
 shiny_data_filter_item <- function(input, output, session, data,
-    column_name = NULL, choices = names(data),
+    column_name = NULL, choices = names,
     verbose = FALSE) {
 
   ns <- session$ns

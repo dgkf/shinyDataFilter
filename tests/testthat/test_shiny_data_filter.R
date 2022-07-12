@@ -44,10 +44,10 @@ app$setInputs(`data_filter-filter_3-vector_filter-param` = c(5, 10))
 test_that("test that nrow reactive value is accurate", {
   expect_equal(
     app$getValue("data_summary"),
-    renderPrint(subset(airquality, 
+    renderPrint(subset(airquality,
       (Ozone >= 30 & Ozone <= 90) &
       (is.na(Wind) | (Wind >= 5 & Wind <= 10))
     ))())
 })
 
-app$stop()
+app$finalize()
