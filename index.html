@@ -60,8 +60,8 @@
 <div class="page-header"><h1 id="shinydatafilter-">shinyDataFilter <a href="https://github.com/dgkf/shinyDataFilter" class="external-link"><img src="assets/hex-shinyDataFilter.png" align="right" height="139"></a>
 <a class="anchor" aria-label="anchor" href="#shinydatafilter-"></a>
 </h1></div>
-<!-- badges: start -->
 <p>data-agnostic, shiny-idiomatic filter module</p>
+<!-- badges: start -->
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/18220321/77127982-b6a9fe80-6a0b-11ea-8233-e77e0f362d70.gif" alt=""><p class="caption">shinyDataFilter</p>
 </div>
@@ -83,7 +83,12 @@
 <p>Then, run this sample app to build filters with <code>shinyDataFilter</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyAppFile</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"examples"</span>, <span class="st">"basic_app"</span>, <span class="st">"app.R"</span>, package <span class="op">=</span> <span class="st">"shinyDataFilter"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"examples"</span>, <span class="st">"basic_app"</span>, <span class="st">"app.R"</span>, package <span class="op">=</span> <span class="st">"shinyDataFilter"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyAppFile</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></span></code></pre></div>
+<p>If you’d like to inspect the code for the app</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/file.edit.html" class="external-link">file.edit</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span>  <span class="co"># or</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/file.show.html" class="external-link">file.show</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 
@@ -116,7 +121,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/dgkf/shinyDataFilter/actions" class="external-link"><img src="https://github.com/dgkf/shinyDataFilter/workflows/check-full/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/dgkf/shinyDataFilter/actions" class="external-link"><img src="https://github.com/dgkf/shinyDataFilter/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
