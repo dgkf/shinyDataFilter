@@ -10,7 +10,7 @@ shiny_data_filter_item(
   session,
   data,
   column_name = NULL,
-  choices = names(data),
+  choices = names,
   verbose = FALSE
 )
 }
@@ -26,6 +26,10 @@ session}
 
 \item{data}{a \code{reactive expression} returning a \code{data.frame} to use
 as the input to the filter item module}
+
+\item{column_name}{A column name to initialize the filter item with. If
+unspecified or \code{NULL}, the filter item is initialized in its column
+selection state.}
 
 \item{choices}{a \code{list} of values to select from, passed to
 \code{\link[shiny]{selectizeInput}}. Alternatively, \code{choices} may also

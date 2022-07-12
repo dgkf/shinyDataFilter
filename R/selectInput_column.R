@@ -16,7 +16,7 @@
 #'
 #' @importFrom shiny selectizeInput
 #'
-columnSelectInput <- function(inputId, label, data, choices = names(data),
+columnSelectInput <- function(inputId, label, data, choices = names,
     selected = "", ..., placeholder = "", onInitialize) {
 
   datar <- if (is.reactive(data)) data else reactive(data)

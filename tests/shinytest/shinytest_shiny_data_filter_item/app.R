@@ -10,7 +10,7 @@ srv <- function(input, output, session) {
     shinyDataFilter::shiny_data_filter_item,
     "filter",
     data = reactive(data)))
-  
+
   output$data_display <- renderPrint({
     print(filtered_data()$data())
   })
