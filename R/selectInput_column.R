@@ -22,7 +22,7 @@ columnSelectInput <- function(inputId, label, data, choices = names,
   datar <- if (is.reactive(data)) data else reactive(data)
 
   if (is.function(choices)) choices <- choices(datar())
-  choices <- intersect(choices, names(datar()))
+  choices <- intersect(choices, colnames(datar()))
 
   labels <- Map(function(col) {
     json <- sprintf(strip_leading_ws('
@@ -33,7 +33,8 @@ columnSelectInput <- function(inputId, label, data, choices = names,
     }'),
     col,
     attr(datar()[[col]], "label") %||% "",
-    get_dataFilter_class(datar()[[col]]))
+    #get_dataFilter_class(datar()[[col]]))
+    get_dataFilter_class(datar() %>% select(all_of(col)) %>% collect() %>% .[[col]]))
   }, col = choices)
 
   names(choices) <- labels

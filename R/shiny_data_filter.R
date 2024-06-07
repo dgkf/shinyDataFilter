@@ -213,7 +213,7 @@ shiny_data_filter <- function(input, output, session, data,
   })
 
   observeEvent(input$add_filter_select, {
-    if (!input$add_filter_select %in% names(datar())) return()
+    if (!input$add_filter_select %in% colnames(datar())) return()
 
     filter_log("observing add filter button press", verbose = verbose)
     update_filter(fid <- next_filter_id(), column_name = input$add_filter_select)

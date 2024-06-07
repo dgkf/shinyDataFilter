@@ -17,15 +17,15 @@
 #'   element "code" which is the expression used to generate the mask.
 #'
 #' @importFrom shiny reactive reactiveValues renderUI selectInput isolate
-shiny_vector_filter_factor_many <- function(input, output, session, 
-    x = shiny::reactive(factor()), filter_na = shiny::reactive(FALSE), 
+shiny_vector_filter_factor_many <- function(input, output, session,
+    x = shiny::reactive(factor()), filter_na = shiny::reactive(FALSE),
     verbose = FALSE) {
-  
+
   ns <- session$ns
 
   x_wo_NAs <- shiny::reactive(Filter(Negate(is.na), x()))
   module_return <- shiny::reactiveValues(code = TRUE, mask = TRUE)
-  
+
   output$ui <- shiny::renderUI({
     filter_log("updating ui", verbose = verbose)
     proportionSelectInput(ns("param"), NULL,
@@ -34,7 +34,7 @@ shiny_vector_filter_factor_many <- function(input, output, session,
       multiple = TRUE,
       width = "100%")
   })
-  
+
   module_return$code <- shiny::reactive({
     if (length(input$param))
       bquote(.x %in% .(c(if (filter_na()) c() else NA, input$param)))
@@ -43,10 +43,11 @@ shiny_vector_filter_factor_many <- function(input, output, session,
     else
       TRUE
   })
-  
+
   module_return$mask <- shiny::reactive({
-    eval(do.call(substitute, list(module_return$code(), list(.x = x()))))
+    #eval(do.call(substitute, list(module_return$code(), list(.x = x()))))
+    TRUE
   })
-  
+
   module_return
 }

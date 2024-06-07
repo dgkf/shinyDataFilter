@@ -160,7 +160,7 @@ shiny_data_filter_item <- function(input, output, session, data,
     module_return$column_name
   })
 
-  output$nrow <- shiny::renderText(nrow(module_return$data()))
+  output$nrow <- shiny::renderText(module_return$data() %>% dplyr::tally() %>% pull(n))
 
   filter_na <- shiny::reactive({
     if (is.null(input$filter_na_btn)) FALSE
@@ -173,7 +173,8 @@ shiny_data_filter_item <- function(input, output, session, data,
 
   vec <- shiny::reactive({
     if (is.null(module_return$column_name)) NULL
-    else data()[[module_return$column_name]]
+    #else data()[[module_return$column_name]]
+    else {data() %>% select(all_of(module_return$column_name)) %>% collect() %>% .[[module_return$column_name]]}
   })
 
   shiny::observeEvent(input$column_select, {
@@ -218,11 +219,12 @@ shiny_data_filter_item <- function(input, output, session, data,
     filter_log("providing data filtered by '",
       module_return$column_name, "'", verbose = verbose)
 
-    out_data <- if (!nrow(data())) data()
+    out_data <- if (FALSE) {data()}  #(!nrow(data())) data()
     else {
-      out_data <- subset(data(), vector_module_return()$mask())
-      for (col in intersect(names(data()), names(out_data)))
-        attributes(out_data[[col]]) <- attributes(data()[[col]])
+      out_data <- filter(data(), vector_module_return()$mask())
+      # out_data <- subset(data(), vector_module_return()$mask())
+      # for (col in intersect(names(data()), names(out_data)))
+      #   attributes(out_data[[col]]) <- attributes(data()[[col]])
       out_data
     }
 

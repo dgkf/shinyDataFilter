@@ -91,7 +91,8 @@ shiny_vector_filter.numeric <- function(data, inputId, ...) {
     })
 
     module_return$mask <- shiny::reactive({
-      eval(do.call(substitute, list(module_return$code(), list(.x = x()))))
+      #eval(do.call(substitute, list(module_return$code(), list(.x = x()))))
+      TRUE
     })
 
     module_return
