@@ -61,7 +61,7 @@ columnSelectInput <- function(inputId, label, data, choices = names,
         },
 
         // avoid data vomit splashing on screen when an option is selected
-        // item: function(item, escape) { return ''; }
+        item: function(item, escape) {return '<div></div>'}
       }")),
 
       # fix for highlight persisting
