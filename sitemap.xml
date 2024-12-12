@@ -1,78 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/columnSelectInput.html</loc>
-  </url>
-  <url>
-    <loc>/reference/filter_log.html</loc>
-  </url>
-  <url>
-    <loc>/reference/filter_log_ns_style.html</loc>
-  </url>
-  <url>
-    <loc>/reference/filter_log_style.html</loc>
-  </url>
-  <url>
-    <loc>/reference/getInitializationCode.shinyDataFilter_df.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_dataFilter_class.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/nullor.html</loc>
-  </url>
-  <url>
-    <loc>/reference/proportionSelectInput.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_data_filter.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_data_filter_item.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_data_filter_item_ui.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_data_filter_ui.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_vector_filter.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_vector_filter_factor_few.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_vector_filter_factor_many.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shiny_vector_filter_ui.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shinytest_path.html</loc>
-  </url>
-  <url>
-    <loc>/reference/strip_leading_ws.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/columnSelectInput.html</loc></url>
+<url><loc>/reference/filter_log.html</loc></url>
+<url><loc>/reference/filter_log_ns_style.html</loc></url>
+<url><loc>/reference/filter_log_style.html</loc></url>
+<url><loc>/reference/getInitializationCode.shinyDataFilter_df.html</loc></url>
+<url><loc>/reference/get_dataFilter_class.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/nullor.html</loc></url>
+<url><loc>/reference/proportionSelectInput.html</loc></url>
+<url><loc>/reference/shiny_data_filter.html</loc></url>
+<url><loc>/reference/shiny_data_filter_item.html</loc></url>
+<url><loc>/reference/shiny_data_filter_item_ui.html</loc></url>
+<url><loc>/reference/shiny_data_filter_ui.html</loc></url>
+<url><loc>/reference/shiny_vector_filter.html</loc></url>
+<url><loc>/reference/shiny_vector_filter_factor_few.html</loc></url>
+<url><loc>/reference/shiny_vector_filter_factor_many.html</loc></url>
+<url><loc>/reference/shiny_vector_filter_ui.html</loc></url>
+<url><loc>/reference/shinytest_path.html</loc></url>
+<url><loc>/reference/strip_leading_ws.html</loc></url>
 </urlset>
+
